@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {selectSong} from '../actions';
+// can't use above line with naming the index file with a lower case I. Else, must use '../actions/Index'
 
 class SongList extends React.Component {
   renderList() {
@@ -7,7 +9,10 @@ class SongList extends React.Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button className="ui button primary">
+            <button
+              className="ui button primary"
+              onClick={() => this.props.selectSong(song)}
+            >
               Select
             </button>
           </div>
@@ -22,7 +27,8 @@ class SongList extends React.Component {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {songs: state.songs};
 };
 
-export default connect(mapStateToProps)(SongList);
+export default connect(mapStateToProps, {selectSong})(SongList);
