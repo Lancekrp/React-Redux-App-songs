@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {selectSong} from '../actions';
-// can't use above line with naming the index file with a lower case I. Else, must use '../actions/Index'
 
 class SongList extends React.Component {
   renderList() {
